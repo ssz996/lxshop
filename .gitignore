@@ -10,8 +10,31 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+#kdiff3 ignore
+*.orig
+
+#maven
+target/
+
+#idea
+.idea/
+/idea/
+*.ipr
+*.iml
+*.iws
+
+#temp
+*.log
+*.cache
+*.diff
+*,patch
+*.tmp
+
+#System
+.DS_Store
+Thumbs.db
+
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
