@@ -1,8 +1,8 @@
 package com.lxshop.service;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.Shipping;
+import com.lxshop.common.ServerResponse;
+import com.lxshop.pojo.Shipping;
 
 /**
  * Created by geely

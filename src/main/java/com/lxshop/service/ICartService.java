@@ -1,7 +1,7 @@
 package com.lxshop.service;
 
-import com.mmall.common.ServerResponse;
-import com.mmall.vo.CartVo;
+import com.lxshop.common.ServerResponse;
+import com.lxshop.vo.CartVo;
 
 /**
  * Created by geely

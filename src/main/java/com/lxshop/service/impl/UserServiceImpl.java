@@ -104,6 +104,7 @@ public class UserServiceImpl implements IUserService {
 
 
     public ServerResponse<String> forgetResetPassword(String username,String passwordNew,String forgetToken){
+//        null,"" ," "三种情况都为true
         if(org.apache.commons.lang3.StringUtils.isBlank(forgetToken)){
             return ServerResponse.createByErrorMessage("参数错误,token需要传递");
         }
@@ -116,7 +117,7 @@ public class UserServiceImpl implements IUserService {
         if(org.apache.commons.lang3.StringUtils.isBlank(token)){
             return ServerResponse.createByErrorMessage("token无效或者过期");
         }
-
+//      避免因为参数是null，equals比较时空指针异常
         if(org.apache.commons.lang3.StringUtils.equals(forgetToken,token)){
             String md5Password  = MD5Util.MD5EncodeUtf8(passwordNew);
             int rowCount = userMapper.updatePasswordByUsername(username,md5Password);
@@ -130,7 +131,7 @@ public class UserServiceImpl implements IUserService {
         return ServerResponse.createByErrorMessage("修改密码失败");
     }
 
-
+//  登录状态里面的重置密码
     public ServerResponse<String> resetPassword(String passwordOld,String passwordNew,User user){
         //防止横向越权,要校验一下这个用户的旧密码,一定要指定是这个用户.因为我们会查询一个count(1),如果不指定id,那么结果就是true啦count>0;
         int resultCount = userMapper.checkPassword(MD5Util.MD5EncodeUtf8(passwordOld),user.getId());

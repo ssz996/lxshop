@@ -1,9 +1,9 @@
 package com.lxshop.service;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.Product;
-import com.mmall.vo.ProductDetailVo;
+import com.lxshop.common.ServerResponse;
+import com.lxshop.pojo.Product;
+import com.lxshop.vo.ProductDetailVo;
 
 /**
  * Created by geely

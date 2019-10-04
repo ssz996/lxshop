@@ -1,7 +1,7 @@
 package com.lxshop.service;
 
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.Category;
+import com.lxshop.common.ServerResponse;
+import com.lxshop.pojo.Category;
 
 import java.util.List;
 

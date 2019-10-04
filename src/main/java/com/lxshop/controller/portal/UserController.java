@@ -38,14 +38,14 @@ public class UserController {
         return userServerResponse;
     }
 //   用户登出
-    @RequestMapping(value = "logout.do",method = RequestMethod.GET)
+    @RequestMapping(value = "logout.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> logout(HttpSession session){
         session.removeAttribute(Const.CURRENT_USER);
         return ServerResponse.createBySuccess();
     }
 
-    @RequestMapping(value = "register.do",method = RequestMethod.GET)
+    @RequestMapping(value = "register.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> register(User user){
         return iUserService.register(user);
@@ -83,7 +83,7 @@ public class UserController {
         return iUserService.checkAnswer(username,question,answer);
     }
 
-
+//  忘记密码 里的重置密码
     @RequestMapping(value = "forget_reset_password.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> forgetRestPassword(String username,String passwordNew,String forgetToken){
@@ -91,7 +91,7 @@ public class UserController {
     }
 
 
-
+//登录状态里的重置密码
     @RequestMapping(value = "reset_password.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> resetPassword(HttpSession session,String passwordOld,String passwordNew){
@@ -110,6 +110,7 @@ public class UserController {
         if(currentUser == null){
             return ServerResponse.createByErrorMessage("用户未登录");
         }
+//      传递过来的user没有userID
         user.setId(currentUser.getId());
         user.setUsername(currentUser.getUsername());
         ServerResponse<User> response = iUserService.updateInformation(user);
